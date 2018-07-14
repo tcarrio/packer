@@ -70,6 +70,11 @@ func (s *StepRunSourceServer) Run(_ context.Context, state multistep.StateBag) m
 		Metadata:         s.InstanceMetadata,
 	}
 
+	// check if image filter returned a source image ID and replace
+	if imageID := state.Get("source_image").(string); imageID != "" {
+		serverOpts.ImageRef = imageID
+	}
+
 	var serverOptsExt servers.CreateOptsBuilder
 	keyName, hasKey := state.GetOk("keyPair")
 	if hasKey {
