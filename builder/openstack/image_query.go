@@ -97,7 +97,6 @@ func buildImageFilters(input map[string]string, listOpts *images.ListOpts) *pack
 		if val, exists := input[key]; exists && vField.CanSet() {
 			switch vField.Kind() {
 
-
 			// Handles integer types used in ListOpts
 			case reflect.Int64, reflect.Int:
 				iVal, err := strconv.Atoi(val)
@@ -154,7 +153,7 @@ func buildImageFilters(input map[string]string, listOpts *images.ListOpts) *pack
 					multiErr.Errors...)
 			}
 
-		// Handles ImageDateQuery types
+			// Handles ImageDateQuery types
 		} else if fieldName == reflect.TypeOf(listOpts.CreatedAtQuery).Name() ||
 			fieldName == reflect.TypeOf(listOpts.UpdatedAtQuery).Name() {
 

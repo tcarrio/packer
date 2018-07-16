@@ -127,8 +127,8 @@ func TestImageFilterOptionsDecode(t *testing.T) {
 		"most_recent": true,
 		"filters": map[string]interface{}{
 			"visibility": "protected",
-			"tag": "prod",
-			"name": "ubuntu 16.04",
+			"tag":        "prod",
+			"name":       "ubuntu 16.04",
 		},
 	}
 	err := mapstructure.Decode(input, &opts)
